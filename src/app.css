@@ -1,0 +1,16 @@
+:root {
+    --accent: #2d6cdf;
+    --bg: #fafafa;
+    --text: #222;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: transparent;
+    /*color: var(--text);*/
+}
+
+h1 {
+    text-align: center;
+}
