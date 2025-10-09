@@ -75,7 +75,7 @@ This project was created for the official website of **Orthodox Metropolis of Ko
 
 ### 1. Clone the repository
 
-    git clone https://github.com/<your-user>/<your-repo>.git
+    git clone https://github.com/LeontGreek/orthodox-korea-calendar-webapp.git
     cd <your-repo>
 
 ### 2. Install dependencies
