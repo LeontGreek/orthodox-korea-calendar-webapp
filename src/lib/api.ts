@@ -2,7 +2,7 @@ import type { DayData } from './types'
 
 export async function fetchCalendar(): Promise<DayData[]> {
   const remoteUrl =
-    'https://raw.githubusercontent.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/refs/heads/master/public/calendar_en.json'
+    'https://raw.githubusercontent.com/LeontGreek/orthodox-korea-calendar-webapp/refs/heads/main/public/calendar_en.json';
 
   try {
     const res = await fetch(remoteUrl)

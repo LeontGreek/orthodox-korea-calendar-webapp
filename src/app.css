@@ -4,11 +4,16 @@
     --text: #222;
 }
 
-body {
+html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
     font-family: system-ui, sans-serif;
     background: transparent;
     /*color: var(--text);*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
