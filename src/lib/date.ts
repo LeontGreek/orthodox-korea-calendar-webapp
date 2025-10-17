@@ -27,7 +27,7 @@ export function getMonthMatrix(
   }
 
   for (let d = 1; d <= end.getDate(); d++) {
-    const date = new Date(year + 1, month, d);
+    const date = new Date(year, month, d);
     const iso = toLocalISO(date);
     const entry = data.find(e => e.date === iso);
     days.push({ date, data: entry });

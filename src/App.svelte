@@ -9,6 +9,19 @@
     let loading = true
     let error: string | null = null
 
+    function assertJsonYearMatches(data: any[]) {
+        if (!Array.isArray(data) || data.length === 0) {
+            throw new Error("Calendar JSON is empty or invalid.")
+        }
+
+        const jsonYear = new Date(data[0].date).getFullYear()
+        const currentYear = new Date().getFullYear()
+
+        if (jsonYear !== currentYear) {
+            throw new Error(`Calendar data is for ${jsonYear}, but current year is ${currentYear}. Please update the JSON file.`)
+        }
+    }
+
     $: monthLabel = new Date($currentYear, $currentMonth).toLocaleString('en', {
         month: 'long',
         year: 'numeric'
@@ -25,12 +38,14 @@
     onMount(async () => {
         try {
             const data = await fetchCalendar()
+            assertJsonYearMatches(data)
             calendarData.set(data)
         } catch (e) {
             error = (e as Error).message
-        } finally {
             loading = false
+            return
         }
+        loading = false
     })
 
     function prevMonth() {
@@ -59,33 +74,35 @@
 </script>
 
 <main>
-    <!-- <h1>OrthodoxKorea Calendar</h1> -->
-    <br>
-    <div class="controls">
-        <button
-                class="prev"
-                on:click={prevMonth}
-                disabled={$currentMonth === 0}
-        >
-            &ldca; {prevMonthLabel}
-        </button>
 
-        <span style="text-shadow: black 1px 1px 2px;">{monthLabel}</span>
-
-        <button
-                class="next"
-                on:click={nextMonth}
-                disabled={$currentMonth === 11}
-        >
-            {nextMonthLabel} &rdca;
-        </button>
-    </div>
-
-    {#if loading}
+    {#if error}
+        <div class="error" style="color: red; text-align: center; font-size: xxx-large; font-weight: bold;">
+            <p>{error}</p>
+        </div>
+    {:else if loading}
         <p>Loading…</p>
-    {:else if error}
-        <p style="color:red">{error}</p>
     {:else}
+        <!-- <h1>OrthodoxKorea Calendar</h1> -->
+        <br>
+        <div class="controls">
+            <button
+                    class="prev"
+                    on:click={prevMonth}
+                    disabled={$currentMonth === 0}
+            >
+                &ldca; {prevMonthLabel}
+            </button>
+
+            <span style="text-shadow: black 1px 1px 2px;">{monthLabel}</span>
+
+            <button
+                    class="next"
+                    on:click={nextMonth}
+                    disabled={$currentMonth === 11}
+            >
+                {nextMonthLabel} &rdca;
+            </button>
+        </div>
         <br>
         <br>
         <MonthGrid />
@@ -94,9 +111,9 @@
                 <DayPanel day={$selectedDay} />
             {/if}
         </Modal>
+        <h4 style="color: #017501"><u>Flags</u>:</h4>
+        <img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/fast.jpeg?raw=true" style="display: block; height: 30px;" alt="Fast"> <b>Fast</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/cheese.jpeg?raw=true" style="display: block; height: 30px;" alt="Cheese"> <b>Dairy Product Permitted</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/fish.jpeg?raw=true" style="display: block; height: 30px;" alt="Fish"> <b>Fish Permitted</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/pres.jpeg?raw=true" style="display: block; height: 30px;" alt="Presanctified"> <b>Presanctified Divine Liturgy</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/bas_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Saint Basil Liturgy"> <b>Liturgy of Saint Basil the Great</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/div_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Divine Liturgy"> <b>Divine Liturgy</b>
     {/if}
-    <h4 style="color: #017501"><u>Flags</u>:</h4>
-    <img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/fast.jpeg?raw=true" style="display: block; height: 30px;" alt="Fast"> <b>Fast</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/cheese.jpeg?raw=true" style="display: block; height: 30px;" alt="Cheese"> <b>Dairy Product Permitted</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/fish.jpeg?raw=true" style="display: block; height: 30px;" alt="Fish"> <b>Fish Permitted</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/pres.jpeg?raw=true" style="display: block; height: 30px;" alt="Presanctified"> <b>Presanctified Divine Liturgy</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/bas_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Saint Basil Liturgy"> <b>Liturgy of Saint Basil the Great</b><img src="https://github.com/CyberSystema-Technologies/orthodox-korea-calendar-webapp/blob/master/public/div_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Divine Liturgy"> <b>Divine Liturgy</b>
 </main>
 
 <style>
