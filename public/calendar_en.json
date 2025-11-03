@@ -1443,7 +1443,7 @@
     "pres": false,
     "saint_basil": false,
     "dl": true,
-    "readings": ["JUDE 1:1-10", "LUKE 22:39-42, 45, 23:1"],
+    "readings": ["JUDE 1:1-10", "LUKE 22:39-42, 45-23:1"],
     "content": [
       {
         "id": "0217_1",
@@ -2019,7 +2019,7 @@
       {
         "id": "0306_2",
         "fields": {
-          "title": "42 Martyrs from Amorium",
+          "title": "42 Martyrs of Amorium",
           "high_rank": false,
           "celeb": false,
           "readings": [],
@@ -2365,7 +2365,7 @@
       {
         "id": "0318_1",
         "fields": {
-          "title": "Cyril Patr. of Jerusalem",
+          "title": "Cyril Patriarch of Jerusalem",
           "high_rank": false,
           "celeb": false,
           "readings": [],
@@ -2618,7 +2618,7 @@
       {
         "id": "0327_1",
         "fields": {
-          "title": "5th Stanza of the Salutations",
+          "title": "The Akathist Hymn",
           "high_rank": true,
           "celeb": false,
           "readings": [],
@@ -2663,7 +2663,7 @@
       {
         "id": "0328_2",
         "fields": {
-          "title": "Gerontissa Gavrilia",
+          "title": "Gerontissa Gabrielia",
           "high_rank": false,
           "celeb": false,
           "readings": [],
@@ -3647,7 +3647,7 @@
       {
         "id": "0430_2",
         "fields": {
-          "title": "Clemen the Monastic",
+          "title": "Clement the Monastic",
           "high_rank": false,
           "celeb": false,
           "readings": [],
@@ -5772,7 +5772,7 @@
       {
         "id": "0711_2",
         "fields": {
-          "title": "Sophronios Zakharov of Essex",
+          "title": "Sophrony Zakharov of Essex",
           "high_rank": false,
           "celeb": false,
           "readings": [],
