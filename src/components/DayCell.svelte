@@ -52,5 +52,6 @@
         hyphens: auto;
         max-width: 95%;
         line-height: 1.2;
+        white-space: pre-line;
     }
 </style>

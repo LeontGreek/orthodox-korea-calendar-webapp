@@ -11,7 +11,7 @@
 </script>
 
 <div class="weekdays">
-    <div style="color: darkred">Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    <div style="color: darkred">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
 </div>
 
 <div class="grid">

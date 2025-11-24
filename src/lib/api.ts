@@ -1,8 +1,7 @@
 import type { DayData } from './types'
 
 export async function fetchCalendar(): Promise<DayData[]> {
-  const remoteUrl =
-    'https://raw.githubusercontent.com/LeontGreek/orthodox-korea-calendar-webapp/refs/heads/main/public/calendar_en.json';
+  //const remoteUrl = 'https://raw.githubusercontent.com/LeontGreek/orthodox-korea-calendar-webapp/refs/heads/main/public/calendar_en.json';
 
   try {
     const res = await fetch(remoteUrl)
@@ -10,7 +9,7 @@ export async function fetchCalendar(): Promise<DayData[]> {
     return await res.json() as DayData[]
   } catch (err) {
     console.warn('⚠️ Remote calendar not available, using local file.', err)
-    const localRes = await fetch('/calendar_en.json')
+    const localRes = await fetch('/calendar_kr.json')
     if (!localRes.ok) throw new Error('Local fallback failed')
     return await localRes.json() as DayData[]
   }
