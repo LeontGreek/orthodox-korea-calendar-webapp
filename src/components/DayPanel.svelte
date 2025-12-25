@@ -1,13 +1,11 @@
 <script lang="ts">
     import type { DayData } from '../lib/types'
-    //import { formatDMY } from '../lib/date'
 
     export let day: DayData
 </script>
 
 <div class="panel">
 
-    <!--<h2>{formatDMY(day.date)}</h2>-->
     <h2>{day.date}</h2>
 
     <h3><u>성서 구절</u>:</h3>
@@ -45,12 +43,12 @@
         <br>
         <ul>
             <!--{#if day.fast}Fast {/if}-->
-            {#if day.fast}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/fast.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Fast"> {/if}
-            {#if day.cheese}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/cheese.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Cheese"> {/if}
-            {#if day.fish}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/fish.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Fish"> {/if}
-            {#if day.pres}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/pres.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Presanctified"> {/if}
-            {#if day.saint_basil}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/bas_lit.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Saint Basil Liturgy"> {/if}
-            {#if day.dl}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/div_lit.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Divine Liturgy"> {/if}
+            {#if day.fast}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/korean/public/fast.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Fast"> {/if}
+            {#if day.cheese}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/korean/public/cheese.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Cheese"> {/if}
+            {#if day.fish}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/korean/public/fish.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Fish"> {/if}
+            {#if day.pres}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/korean/public/pres.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Presanctified"> {/if}
+            {#if day.saint_basil}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/korean/public/bas_lit.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Saint Basil Liturgy"> {/if}
+            {#if day.dl}<img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/korean/public/div_lit.jpeg?raw=true" style="display: inline-block; height: 50px; padding: 5px;" alt="Divine Liturgy"> {/if}
         </ul>
     {/if}
 </div>
