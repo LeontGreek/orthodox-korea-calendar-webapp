@@ -7,7 +7,7 @@
     import { fetchCalendar } from './lib/api'
 
     let loading = true
-    let error: string | null = null
+    let error = false
 
     function assertJsonYearMatches(data: any[]) {
         if (!Array.isArray(data) || data.length === 0) {
@@ -22,20 +22,7 @@
         }
     }
 
-    $: monthLabel = new Date($currentYear, $currentMonth).toLocaleString('ko', {
-        month: 'long',
-        year: 'numeric'
-    })
-
-    $: nextMonthLabel = new Date($currentYear, $currentMonth + 1).toLocaleString('ko', {
-        month: 'long'
-    })
-
-    $: prevMonthLabel = new Date($currentYear, $currentMonth - 1).toLocaleString('ko', {
-        month: 'long'
-    })
-
-    /*$: monthLabel = new Date($currentYear, $currentMonth).toLocaleString('en', {
+    $: monthLabel = new Date($currentYear, $currentMonth).toLocaleString('en', {
         month: 'long',
         year: 'numeric'
     })
@@ -46,16 +33,17 @@
 
     $: prevMonthLabel = new Date($currentYear, $currentMonth - 1).toLocaleString('en', {
         month: 'long'
-    })*/
+    })
 
     onMount(async () => {
         try {
             const data = await fetchCalendar()
-            //assertJsonYearMatches(data)
+            assertJsonYearMatches(data)
             calendarData.set(data)
         } catch (e) {
-            error = (e as Error).message
+            console.error('[Calendar error]', e)
             loading = false
+            error = true
             return
         }
         loading = false
@@ -88,12 +76,10 @@
 
 <main>
 
-    {#if error}
-        <div class="error" style="color: red; text-align: center; font-size: xxx-large; font-weight: bold;">
-            <p>{error}</p>
-        </div>
-    {:else if loading}
+    {#if loading}
         <p>Loading…</p>
+    {:else if error}
+
     {:else}
         <!-- <h1>OrthodoxKorea Calendar</h1> -->
         <br>
@@ -124,8 +110,8 @@
                 <DayPanel day={$selectedDay} />
             {/if}
         </Modal>
-        <h4 style="color: #017501"><u>의미</u>:</h4>
-        <img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/fast.jpeg?raw=true" style="display: block; height: 30px;" alt="Fast"> <b>금식</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/cheese.jpeg?raw=true" style="display: block; height: 30px;" alt="Cheese"> <b>유제품 허용</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/fish.jpeg?raw=true" style="display: block; height: 30px;" alt="Fish"> <b>생선 허용</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/pres.jpeg?raw=true" style="display: block; height: 30px;" alt="Presanctified"> <b>미리 축성된 성찬예배</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/bas_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Saint Basil Liturgy"> <b>성 대 바실리오스 성찬예배</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/main/public/div_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Divine Liturgy"> <b>성찬예배</b>
+        <h4 style="color: #017501"><u>Flags</u>:</h4>
+        <img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/english/public/fast.jpeg?raw=true" style="display: block; height: 30px;" alt="Fast"> <b>Fast</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/english/public/cheese.jpeg?raw=true" style="display: block; height: 30px;" alt="Cheese"> <b>Dairy Product Permitted</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/english/public/fish.jpeg?raw=true" style="display: block; height: 30px;" alt="Fish"> <b>Fish Permitted</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/english/public/pres.jpeg?raw=true" style="display: block; height: 30px;" alt="Presanctified"> <b>Presanctified Divine Liturgy</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/english/public/bas_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Saint Basil Liturgy"> <b>Liturgy of Saint Basil the Great</b><img src="https://github.com/LeontGreek/orthodox-korea-calendar-webapp/blob/english/public/div_lit.jpeg?raw=true" style="display: block; height: 30px;" alt="Divine Liturgy"> <b>Divine Liturgy</b>
     {/if}
 </main>
 
