@@ -1,5 +1,5 @@
 export async function fetchCalendar() {
-    const remoteUrl = 'https://raw.githubusercontent.com/LeontGreek/orthodox-korea-calendar-webapp/refs/heads/main/public/calendar_en.json';
+    const remoteUrl = 'https://raw.githubusercontent.com/LeontGreek/orthodox-korea-calendar-webapp/refs/heads/english/public/calendar_en.json';
     try {
         const res = await fetch(remoteUrl);
         if (!res.ok)
